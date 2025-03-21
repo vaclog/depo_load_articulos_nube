@@ -17,10 +17,7 @@ class Smtp:
         self.password = password
         self.sender_mail = sender_mail
               
-    
-    
-        print(host)
-        
+               
             
     def SendMail(self, to, subject, plain_message="", html_message="<html></html>", imagename=""):
         context = ssl.create_default_context()

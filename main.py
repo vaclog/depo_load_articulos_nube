@@ -8,6 +8,8 @@ import pandas as pd
 import os
 import logging
 import smtp
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def main():
