@@ -44,7 +44,7 @@ def main():
         df_final.to_sql(TABLA, con=db.engine, if_exists='append', index=False)
         
         cantidad = len(df_final)
-        print(f"✅ Se insertaron {cantidad} registros en la tabla `{TABLA}`.")
+        print(f"Se insertaron {cantidad} registros en la tabla `{TABLA}`.")
 
 
         end_time = util.show_time("Fin")
