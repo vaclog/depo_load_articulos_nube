@@ -12,7 +12,7 @@ class Config:
         self.db_database=settings['DB_DATABASE']
         self.db_user=settings['DB_USER']
         self.db_password=settings['DB_PASSWORD']
-
+        self.db_port=settings['DB_PORT']
         self.smtp_host=os.getenv('SMTP_HOST')
         self.smtp_port=os.getenv('SMTP_PORT')
         self.smtp_user=os.getenv('SMTP_USER')
