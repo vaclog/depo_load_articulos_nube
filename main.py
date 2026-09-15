@@ -1,3 +1,16 @@
+import os
+import sys
+
+# Permite indicar el environment a usar:
+#   python main.py --env test   -> carga .env.test
+#   ENV_FILE=.env.test python main.py  -> idem, vía variable de entorno
+if "ENV_FILE" not in os.environ:
+    env_name = None
+    for i, arg in enumerate(sys.argv):
+        if arg in ("--env", "-e") and i + 1 < len(sys.argv):
+            env_name = sys.argv[i + 1]
+    os.environ["ENV_FILE"] = f".env.{env_name}" if env_name else ".env"
+
 import db
 from sqlalchemy import create_engine, text
 import traceback
@@ -5,11 +18,10 @@ import inspect
 import util
 
 import pandas as pd
-import os
 import logging
 import smtp
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(os.environ["ENV_FILE"], override=True)
 
 
 def main():

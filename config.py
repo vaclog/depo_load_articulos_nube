@@ -1,8 +1,10 @@
 from dotenv import dotenv_values
 import os
-settings = dotenv_values(".env")
+
+ENV_FILE = os.getenv("ENV_FILE", ".env")
+settings = dotenv_values(ENV_FILE)
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(ENV_FILE, override=True)
 
 class Config:
     
@@ -12,7 +14,7 @@ class Config:
         self.db_database=settings['DB_DATABASE']
         self.db_user=settings['DB_USER']
         self.db_password=settings['DB_PASSWORD']
-        self.db_port=settings['DB_PORT']
+        self.db_port=settings.get('DB_PORT', '3306')
         self.smtp_host=os.getenv('SMTP_HOST')
         self.smtp_port=os.getenv('SMTP_PORT')
         self.smtp_user=os.getenv('SMTP_USER')
